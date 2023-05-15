@@ -1,0 +1,32 @@
+@use './vars';
+@import "https://fonts.fontstorage.com/import/opensans.css";
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 600px;
+	padding: 0 20px;
+  margin: 0 auto;
+}
