@@ -1,0 +1,10 @@
+@use '../../styles/vars';
+
+.create-chat {
+	border-radius: 8px;
+	padding: 10px;
+	background-color: vars.$lightGray;
+	display: flex;
+	flex-direction: column;
+
+}

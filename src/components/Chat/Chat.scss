@@ -1,0 +1,12 @@
+@use '../../styles/vars';
+
+.chat {
+	flex-grow: 1;
+	background-image: url('../../assets/images/bg-chat-tile-dark_a4be512e7195b6b733d9110b408f075d.png');
+
+	&__header {
+		min-height: 40px;
+		background-color: vars.$lightGray;
+	}
+
+}

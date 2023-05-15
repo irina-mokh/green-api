@@ -2,4 +2,5 @@
 @use './vars.scss';
 @use '../components/App/App.scss';
 @use '../components/LoginForm/LoginForm.scss';
-// @use '../components/Loader/Loader.scss';
+@use '../components/Main/Main.scss';
+@use '../components/CreateChat/CreateChat.scss';
