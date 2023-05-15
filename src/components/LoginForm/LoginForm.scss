@@ -1,0 +1,21 @@
+@use '../../styles/vars';
+
+.login {
+	display: flex;
+	flex-direction: column;
+	padding-top: 1em;
+
+	&__label {
+		margin: 0 0 7px 0;
+		color: vars.$blueGreen;
+	}
+
+	&__input {
+		margin: 0 0 10px 0;
+
+	}
+
+	&__submit {
+		margin-top: 20px;
+	}
+}
