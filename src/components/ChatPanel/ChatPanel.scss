@@ -1,0 +1,23 @@
+@use '../../styles/vars';
+
+.chat-panel {
+	background-color: vars.$lightGray;
+	padding: 3px 10px;
+	display: flex;
+	&__input {
+		flex-grow: 1;
+	}
+
+	.icon {
+		width: 40px;
+		padding: 0 5px;
+		filter: invert(27%) sepia(21%) saturate(718%) hue-rotate(157deg) brightness(103%) contrast(89%);
+		opacity: 0.7;
+		&:hover {
+			opacity: 0.9;
+		}
+		&:active {
+			opacity: 1;
+		}
+	}
+}

@@ -1,0 +1,49 @@
+@use '../../styles/vars';
+
+.msg {
+	padding: 7px 7px 20px 7px;
+	max-width: 80%;
+	border-radius: 8px;
+	margin: 5px 0;
+	position: relative;
+
+	&_in, &_out {
+	&::before {
+		content: '';
+		position: absolute;
+		width: 16px;
+		height: 13px;
+		top: 0;
+		display: block;
+		box-sizing: border-box;
+		border: 8px solid transparent;
+		z-index: 2;
+	}
+}
+
+	&_in {
+		background-color: vars.$white;
+		&::before {
+			border-top-color: vars.$white;
+			left: -8px;
+
+		}
+	}
+
+	&_out {
+		&::before {
+			border-top-color: vars.$lightGreen;
+			right: -8px;
+		}
+		align-self: flex-end;
+		background-color: vars.$lightGreen;
+	}
+
+	&__time {
+		position: absolute;
+		bottom: 5px;
+		right: 5px;
+		color: vars.$gray;
+		font-size: 11px;
+	}
+}

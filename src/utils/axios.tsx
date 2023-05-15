@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const axiosClient = axios.create({
   baseURL: 'https://api.green-api.com',
-  timeout: 7000,
+  // timeout: 10000,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
