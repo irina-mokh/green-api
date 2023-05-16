@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { axiosClient } from '../../utils/axios';
 import { useAuth } from '../../utils/hooks';
 import { Message } from '../Message';
@@ -101,9 +101,21 @@ export const Conversation = ({ tel }: ConversationProps) => {
     }
   }, [receipt?.receiptId]);
 
+  const messagesEndRef = useRef<HTMLLIElement | null>(null);
+
+  useEffect(() => {
+    console.log('run scroll');
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages.length]);
+
   const msgsEl = messages
     ?.sort((a, b) => Number(a.timestamp) - Number(b.timestamp))
     .map((msg) => (msg.idMessage ? <Message {...msg} key={msg.idMessage} /> : null));
 
-  return <ul className="conversation">{msgsEl}</ul>;
+  return (
+    <ul className="conversation">
+      {msgsEl}
+      <li className="conversation__end" ref={messagesEndRef}></li>
+    </ul>
+  );
 };
