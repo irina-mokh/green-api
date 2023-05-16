@@ -9,9 +9,11 @@ export const Chat = ({ tel }: ChatProps) => {
   return (
     <section className="chat">
       <header className="chat__header">
-        <h3>+{tel}</h3>
+        <h3>{tel ? '+' + tel : 'Select a chat'}</h3>
       </header>
-      <Conversation tel={tel} />
+      <main className="chat__wrapper">
+        <Conversation tel={tel} />
+      </main>
       <ChatPanel tel={tel} />
     </section>
   );
