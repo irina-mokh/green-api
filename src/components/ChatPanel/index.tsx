@@ -4,10 +4,10 @@ import { axiosClient } from '../../utils/axios';
 import { useAuth } from '../../utils/hooks';
 
 type ChatPanelProps = {
-  tel: string,
+  id: string,
 };
 
-export const ChatPanel = ({ tel }: ChatPanelProps) => {
+export const ChatPanel = ({ id }: ChatPanelProps) => {
   const [msg, setMsg] = useState('');
 
   const [idInstance, apiTokenInstance] = useAuth();
@@ -15,11 +15,10 @@ export const ChatPanel = ({ tel }: ChatPanelProps) => {
   const sendMessage = () => {
     axiosClient
       .post(`/waInstance${idInstance}/sendMessage/${apiTokenInstance}`, {
-        chatId: tel + `@c.us`,
+        chatId: id,
         message: msg,
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         setMsg('');
       });
   };

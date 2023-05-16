@@ -4,7 +4,7 @@ import { useAuth } from '../../utils/hooks';
 import { Message } from '../Message';
 import { MessageType } from '../Message';
 type ConversationProps = {
-  tel: string,
+  id: string,
 };
 
 type ReceiptType = {
@@ -25,7 +25,7 @@ type ReceiptType = {
   },
 };
 
-export const Conversation = ({ tel }: ConversationProps) => {
+export const Conversation = ({ id }: ConversationProps) => {
   const [messages, setMessages] = useState<Array<MessageType>>([]);
   const [receipt, setReceipt] = useState<ReceiptType>();
   const [idInstance, apiTokenInstance] = useAuth();
@@ -33,7 +33,7 @@ export const Conversation = ({ tel }: ConversationProps) => {
   const getMessages = () => {
     axiosClient
       .post(`/waInstance${idInstance}/getChatHistory/${apiTokenInstance}`, {
-        chatId: tel + `@c.us`,
+        chatId: id,
         count: 100,
       })
       .then((res) => {
@@ -67,15 +67,15 @@ export const Conversation = ({ tel }: ConversationProps) => {
       });
   };
   useEffect(() => {
-    if (tel) getMessages();
-  }, [tel]);
+    if (id) getMessages();
+  }, [id]);
 
   useEffect(() => {
     const int = setInterval(() => {
-      if (tel) getNotifications();
+      if (id) getNotifications();
     }, 5000);
     return () => clearInterval(int);
-  }, [tel]);
+  }, [id]);
 
   useEffect(() => {
     if (receipt?.body.messageData) {
