@@ -30,17 +30,6 @@ export const Conversation = ({ id }: ConversationProps) => {
   const [receipt, setReceipt] = useState<ReceiptType>();
   const [idInstance, apiTokenInstance] = useAuth();
 
-  const getMessages = () => {
-    axiosClient
-      .post(`/waInstance${idInstance}/getChatHistory/${apiTokenInstance}`, {
-        chatId: id,
-        count: 100,
-      })
-      .then((res) => {
-        setMessages([...res.data]);
-      });
-  };
-
   const deleteNotification = () => {
     if (receipt)
       axiosClient
@@ -49,7 +38,6 @@ export const Conversation = ({ id }: ConversationProps) => {
 			`
         )
         .then(() => {
-          console.log('DELETED:' + receipt.receiptId);
           setReceipt(undefined);
         });
   };
@@ -67,7 +55,7 @@ export const Conversation = ({ id }: ConversationProps) => {
       });
   };
   useEffect(() => {
-    if (id) getMessages();
+    setMessages([]);
   }, [id]);
 
   useEffect(() => {
@@ -94,7 +82,7 @@ export const Conversation = ({ id }: ConversationProps) => {
         idMessage,
         textMessage: text,
         timestamp,
-        type: typeWebhook === 'outgoingMessageReceived' ? 'outgoing' : 'incoming',
+        type: typeWebhook.includes('outgoing') ? 'outgoing' : 'incoming',
       };
       setMessages([...messages, newMsg]);
       deleteNotification();

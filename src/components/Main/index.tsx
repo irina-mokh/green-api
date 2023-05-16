@@ -1,8 +1,6 @@
-import { axiosClient } from '../../utils/axios';
-import { useAuth } from '../../utils/hooks';
 import { Chat } from '../Chat';
 import { CreateChat } from '../CreateChat';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 type ChatType = {
   id: string,
@@ -18,26 +16,10 @@ export const Main = () => {
     setChats([
       ...chats,
       {
-        id: tel,
+        id: tel + '@c.us',
       },
     ]);
   };
-
-  const [idInstance, apiTokenInstance] = useAuth();
-
-  const getChats = () => {
-    console.log('get chats...');
-    if (chats.length === 0) {
-      axiosClient.get(`/waInstance${idInstance}/getChats/${apiTokenInstance}`).then((res) => {
-        console.log(res);
-        setChats(res.data);
-      });
-    }
-  };
-
-  useEffect(() => {
-    getChats();
-  }, [idInstance]);
 
   const chatElems = chats.map((chat) => (
     <li
