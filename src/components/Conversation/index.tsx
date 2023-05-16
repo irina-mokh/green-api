@@ -104,7 +104,6 @@ export const Conversation = ({ tel }: ConversationProps) => {
   const messagesEndRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
-    console.log('run scroll');
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages.length]);
 

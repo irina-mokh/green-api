@@ -4,7 +4,7 @@ import { LoginForm, LoginType } from '../LoginForm';
 
 const INITIAL_AUTH: LoginType = {
   idInstance: localStorage.getItem('idInstance') || '',
-  apiTokenInstance: localStorage.getItem('idInstance') || '',
+  apiTokenInstance: localStorage.getItem('apiTokenInstance') || '',
 };
 
 export const App = () => {
