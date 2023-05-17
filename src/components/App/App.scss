@@ -1,6 +1,7 @@
 @use '../../styles/vars';
 
 .app {
-  background-color: vars.$lightGray;
+  background-image: url('../../assets/images/bg-chat-tile-dark_a4be512e7195b6b733d9110b408f075d.png');
+	background-color: vars.$beige;
   min-height: 100vh;
 }
