@@ -1,0 +1,19 @@
+@use '../../styles/vars';
+
+.user {
+	display: flex;
+	align-items: center;
+	&__avatar {
+		background-color: vars.$gray;
+		border-radius: 50%;
+		margin: 0 10px 0 0;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		overflow: hidden;
+		img {
+			object-fit: cover;
+			
+		}
+	}
+}

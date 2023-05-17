@@ -1,6 +1,7 @@
 import { Chat } from '../Chat';
 import { CreateChat } from '../CreateChat';
 import { useState } from 'react';
+import { User } from '../User';
 
 type ChatType = {
   id: string,
@@ -27,7 +28,7 @@ export const Main = () => {
       key={chat.id}
       onClick={() => setActiveChat(chat.id)}
     >
-      +{chat.id.slice(0, -5)}
+      <User tel={chat.id.slice(0, -5)} />
     </li>
   ));
 
