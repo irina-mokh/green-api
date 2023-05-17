@@ -40,7 +40,12 @@ export const CreateChat = ({ addChat }: CreateChatProps) => {
         value={tel}
         onChange={(e) => setTel(e.target.value)}
       ></input>
-      <button className="btn" onClick={handleCreateChat} disabled={!tel || tel.length < 11}>
+      <button
+        className="btn"
+        onClick={handleCreateChat}
+        disabled={!tel || tel.length < 11}
+        area-aria-label="add chat"
+      >
         Add chat
       </button>
     </form>

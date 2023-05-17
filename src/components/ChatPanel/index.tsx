@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import sentIcon from '../../assets/icons/Send.svg';
 import { axiosClient } from '../../utils/axios';
 import { useAuth } from '../../utils/hooks';
 
@@ -30,9 +29,14 @@ export const ChatPanel = ({ id }: ChatPanelProps) => {
         type="text"
         value={msg}
         onChange={(e) => setMsg(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && e.ctrlKey) {
+            sendMessage();
+          }
+        }}
         placeholder="Enter your message"
       ></input>
-      <img className="icon" src={sentIcon} onClick={sendMessage} />
+      <button className="send-btn" onClick={sendMessage} aria-label="send message"></button>
     </footer>
   );
 };

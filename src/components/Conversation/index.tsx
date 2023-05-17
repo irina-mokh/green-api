@@ -49,7 +49,6 @@ export const Conversation = ({ id }: ConversationProps) => {
       )
       .then((res) => {
         if (res.data) {
-          console.log('RECEIVED:', res);
           setReceipt(res.data);
         }
       });
