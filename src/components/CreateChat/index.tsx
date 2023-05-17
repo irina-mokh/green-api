@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { axiosClient } from '../../utils/axios';
+import { useAuth } from '../../utils/hooks';
 type CreateChatProps = {
   addChat: (data: string) => void,
 };
@@ -6,10 +8,26 @@ type CreateChatProps = {
 export const CreateChat = ({ addChat }: CreateChatProps) => {
   const [tel, setTel] = useState('');
 
+  const [idInstance, apiTokenInstance] = useAuth();
+
   const handleCreateChat = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    addChat(tel);
-    setTel('');
+    axiosClient
+      .post(
+        `waInstance${idInstance}/checkWhatsapp/${apiTokenInstance}
+		`,
+        {
+          phoneNumber: tel,
+        }
+      )
+      .then((res) => {
+        if (res.data.existsWhatsapp) {
+          addChat(tel);
+        } else {
+          alert('No whatsapp on this number');
+        }
+        setTel('');
+      });
   };
 
   return (
